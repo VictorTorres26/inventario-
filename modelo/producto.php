@@ -113,6 +113,24 @@ class clas_producto extends clasconexion{
             }
         
         }
+        public function inventario(){
+            try{
+                $sql = "SELECT id_producto, nombre, descripcion, marca.nombre_marca, stock, precio,
+                        categoria.nombre_categoria, proveedor.nombre_proveedor FROM producto
+                        INNER JOIN marca ON producto.marca = marca.Id_marca
+                        INNER JOIN proveedor ON producto.proveedor = proveedor.id_proveedor
+                        INNER JOIN categoria ON producto.categoria = categoria.id_categoria;";
+                $query = $this->obj->prepare($sql);
+                $query->execute();
+                    
+                return  $query->fetchAll(PDO::FETCH_ASSOC);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        
+        }
+
+        
 
         public function contar_productos(){
             try{

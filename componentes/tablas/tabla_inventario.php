@@ -12,8 +12,8 @@ $ObjProducto = new clas_producto();
                 <input type="search" placeholder="Search...">
                 <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
             </div>
-            <button>Agregar</button>
-            <button>Eliminar</button>
+            <button id="add">Agregar</button>
+            <button id="delete">Eliminar</button>
         </div>
         <table>
             <thead class="thead">
@@ -31,7 +31,7 @@ $ObjProducto = new clas_producto();
             </thead>
 
             <?php
-            foreach($ObjProducto->mostrar() as $dato){
+            foreach($ObjProducto->inventario() as $dato){
             ?>
 
             <tbody>
@@ -39,11 +39,11 @@ $ObjProducto = new clas_producto();
                     <td><?php echo $dato['id_producto'];?></td>
                     <td><?php echo $dato['nombre'];?></td>
                     <td><?php echo $dato['descripcion'];?></td>
-                    <td><?php echo $dato['marca'];?></td>
+                    <td><?php echo $dato['nombre_marca'];?></td>
                     <td><?php echo $dato['stock'];?></td>
-                    <td><?php echo $dato['precio'];?></td>
-                    <td><?php echo $dato['categoria'];?></td>
-                    <td><?php echo $dato['proveedor'];?></td>
+                    <td><?php echo $dato['precio']; echo '$';?></td>
+                    <td><?php echo $dato['nombre_categoria'];?></td>
+                    <td><?php echo $dato['nombre_proveedor'];?></td>
                     <td>
                         <a class="edit"><i class="bx bxs-edit"></i></a>
                         <a class="delete"><i class='bx bxs-message-alt-x'></i></a>

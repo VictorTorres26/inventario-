@@ -21,12 +21,12 @@
                 require_once '../componentes/headers/header_inventario.php';
                 require_once '../componentes/insignias/insignia_inventario.php';
                 require_once '../componentes/tablas/tabla_inventario.php';
-                // require_once 'view/reminders.php';
             ?>
     
         </main>
     </div>
     <script src="../recursos/js/funciones.js"></script>
+    <script src="../recursos/js/modal.js"></script>
 
 
 </body>
