@@ -192,7 +192,7 @@ body{
     top: 0;
     left: 0;
     z-index: 1000;
-    border-radius: 20px;
+    border-radius: 0 0 20px;
 }
 
 .content nav::before{
@@ -227,10 +227,11 @@ body{
     height: 36px;
 }
 
-.content nav form .form-input input{
+.content nav form .form-input input,
+#buscar{
     flex-grow: 1;
     padding: 0 16px;
-    height: 100%;
+    height: 40px;
     border: none;
     background: var(--grey);
     border-radius: 36px 0 0 36px;
@@ -240,9 +241,10 @@ body{
 }
 
 
-.content nav form .form-input button{
+.content nav form .form-input button,
+#iconBuscar{
     width: 80px;
-    height: 100%;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,6 +260,7 @@ body{
 .content nav .notif{
     font-size: 20px;
     position: relative;
+    margin-left: 900px;
 }
 
 .content nav .notif .count{
@@ -282,6 +285,7 @@ body{
     height: 36px;
     object-fit: cover;
     border-radius: 50%;
+    margin-left: 5px;
 }
 
 .content nav .theme-toggle{
@@ -361,6 +365,7 @@ body{
     grid-gap: 10px;
     font-weight: 500;
 }
+
 
 .content main .insights{
     display: grid;
@@ -442,10 +447,15 @@ body{
     margin-bottom: 24px;
 }
 
+.content main .bottom-data .header .form-input{
+    display: flex;
+}
+
 .content main .bottom-data .header h3{
     margin-right: auto;
     font-size: 24px;
     font-weight: 600;
+    color: #3392af;
 }
 
 .content main .bottom-data .header .bx{
@@ -468,6 +478,7 @@ body{
     font-size: 13px;
     text-align: left;
     border-bottom: 1px solid var(--grey);
+    color: #388E3C;
    
 }
 
@@ -476,8 +487,18 @@ body{
 }
 
 .content main .bottom-data .orders table td a.edit i.bxs-edit{
-    color: #FBC02D;
+    color: #ad7e05;
 }
+.content main .bottom-data .orders table td a.edit i.bxs-edit:hover{
+    color: #ffb803;
+}
+.content main .bottom-data .orders table td a.delete i.bxs-message-alt-x{
+    color: #b61d09;
+}
+.content main .bottom-data .orders table td a.delete i.bxs-message-alt-x:hover{
+    color: #ff1e00;
+}
+
 
 .content main .bottom-data .orders table tr td:first-child{
     display: flex;

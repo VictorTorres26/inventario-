@@ -9,11 +9,10 @@ $ObjProducto = new clas_producto();
             <i class='bx bx-receipt'></i>
             <h3>Productos Registrados</h3>
             <div class="form-input">
-                <input type="search" placeholder="Search...">
-                <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                <input type="search" id="buscar" placeholder="Search...">
+                <button class="search-btn" id="iconBuscar" type="submit"><i class='bx bx-search'></i></button>
+                <button id="add">Agregar</button>
             </div>
-            <button id="add">Agregar</button>
-            <button id="delete">Eliminar</button>
         </div>
         <table>
             <thead class="thead">
@@ -46,7 +45,7 @@ $ObjProducto = new clas_producto();
                     <td><?php echo $dato['nombre_proveedor'];?></td>
                     <td>
                         <a class="edit"><i class="bx bxs-edit"></i></a>
-                        <a class="delete"><i class='bx bxs-message-alt-x'></i></a>
+                        <a href="../../controller/control_producto.php" class="delete"  onclick="<?php echo $ObjProducto->eliminar() ?>"><i class='bx bxs-message-alt-x'></i></a>
                     </td>
                 </tr>
 

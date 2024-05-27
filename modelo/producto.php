@@ -1,14 +1,17 @@
 <?php
 require_once "../config/conexion.php";
+require_once "../modelo/marca_categoria_tproveedor.php";
+
+
 class clas_producto extends clasconexion{
     private $id_producto;
     private $nombre;
     private $descripcion;
-    private $marca;
+    private $id_marca;
     private $stock;
     private $precio;
-    private $categoria;
-    private $proveedor;
+    private $id_categoria;
+    private $id_proveedor;
     
     public $obj;
 
@@ -21,8 +24,8 @@ class clas_producto extends clasconexion{
     public function set_descripcion($descripcion){$this->descripcion = $descripcion;}
     public function get_descripcion(){return $this->descripcion;}
 
-    public function set_marca($marca){$this->marca = $marca;}
-    public function get_marcar(){return $this->marca;}
+    public function set_id_marca($id_marca){$this->id_marca = $id_marca;}
+    public function get_id_marca(){return $this->id_marca;}
 
     public function set_stock($stock){$this->stock = $stock;}
     public function get_stock(){return $this->stock;}
@@ -30,11 +33,11 @@ class clas_producto extends clasconexion{
     public function set_precio($precio){$this->precio = $precio;}
     public function get_precio(){return $this->precio;}
 
-    public function set_categoria($categoria){$this->categoria = $categoria;}
-    public function get_categoria(){return $this->categoria;}
+    public function set_id_categoria($id_categoria){$this->id_categoria = $id_categoria;}
+    public function get_id_categoria(){return $this->id_categoria;}
 
-    public function set_proveedor($proveedor){$this->proveedor = $proveedor;}
-    public function get_proveedor(){return $this->proveedor;}
+    public function set_id_proveedor($id_proveedor){$this->id_proveedor = $id_proveedor;}
+    public function get_id_proveedor(){return $this->id_proveedor;}
 
    
         public function __construct(){
@@ -49,16 +52,16 @@ class clas_producto extends clasconexion{
 
         public function registrar(){
             try{
-                $sql = "INSERT INTO producto (id_producto,nombre,descripcion,marca,stock,precio,categoria,proveedor) VALUES (:id_producto,:nombre,:descripcion,:marca,:stock,:precio,:categoria,:proveedor)";
+                $sql = "INSERT INTO producto (id_producto,nombre,descripcion,id_marca,stock,precio,id_categoria,id_proveedor) VALUES (:id_producto,:nombre,:descripcion,:id_marca,:stock,:precio,:id_categoria,:id_proveedor)";
                 $query = $this->obj->prepare($sql);
                 $query->bindParam(':id_producto',$this->id_producto);
                 $query->bindParam(':nombre',$this->nombre);
                 $query->bindParam(':descripcion',$this->descripcion); 
-                $query->bindParam(':marca',$this->marca);
+                $query->bindParam(':id_marca',$this->id_marca);
                 $query->bindParam(':stock',$this->stock);
                 $query->bindParam(':precio',$this->precio);
-                $query->bindParam(':categoria',$this->categoria);
-                $query->bindParam(':proveedor',$this->proveedor);
+                $query->bindParam(':id_categoria',$this->id_categoria);
+                $query->bindParam(':id_proveedor',$this->id_proveedor);
                 $resultado = $query->execute();
                 return $resultado;
             } catch (PDOException $e){
@@ -69,15 +72,15 @@ class clas_producto extends clasconexion{
 
         public function actualizar(){
             try{
-                $sql = "UPDATE producto set nombre =:nombre ,descripcion = :descripcion ,marca = :marca ,stock = :stock,precio = :precio, categoria = :categoria, proveedor = :proveedor WHERE id_producto = :id_producto";
+                $sql = "UPDATE producto set nombre =:nombre ,descripcion = :descripcion ,id_marca = :id_marca ,stock = :stock,precio = :precio, id_categoria = :id_categoria, id_proveedor = :id_proveedor WHERE id_producto = :id_producto";
                 $query = $this->obj->prepare($sql);
                 $query->bindParam(':nombre',$this->nombre);
                 $query->bindParam(':descripcion',$this->descripcion); 
-                $query->bindParam(':marca',$this->marca);
+                $query->bindParam(':marca',$this->id_marca);
                 $query->bindParam(':stock',$this->stock);
                 $query->bindParam(':precio',$this->precio);
-                $query->bindParam(':categoria',$this->categoria);
-                $query->bindParam(':provedor',$this->proveedor);
+                $query->bindParam(':categoria',$this->id_categoria);
+                $query->bindParam(':provedor',$this->id_proveedor);
                 $query->bindParam(':id_producto',$this->id_producto);
                 $resultado = $query->execute();
 
@@ -117,9 +120,9 @@ class clas_producto extends clasconexion{
             try{
                 $sql = "SELECT id_producto, nombre, descripcion, marca.nombre_marca, stock, precio,
                         categoria.nombre_categoria, proveedor.nombre_proveedor FROM producto
-                        INNER JOIN marca ON producto.marca = marca.Id_marca
-                        INNER JOIN proveedor ON producto.proveedor = proveedor.id_proveedor
-                        INNER JOIN categoria ON producto.categoria = categoria.id_categoria;";
+                        INNER JOIN marca ON producto.id_marca = marca.id_marca
+                        INNER JOIN proveedor ON producto.id_proveedor = proveedor.id_proveedor
+                        INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria;";
                 $query = $this->obj->prepare($sql);
                 $query->execute();
                     

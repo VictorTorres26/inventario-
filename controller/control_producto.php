@@ -1,27 +1,24 @@
 <?php 
     include_once "../modelo/producto.php";
+    include_once "../modelo/marca_categoria_tproveedor.php";
+    include_once "../modelo/proveedor.php";
     
     $objproducto = new clas_producto();
+    $objmarca_catergoria_tproveedor = new class_marca_categoria_tproveedor();
+    $objProveedor = new clas_proveedor();
 
-    $id_producto = "";
-    $nombre = "";
-    $descripcion = "";
-    $marca = "";
-    $stock = "";
-    $precio = "";
-    $categoria = "";
-    $proveedor = "";
+
    
     if(isset($_POST['guardar'])){
        
         $objproducto->set_id_producto($_POST['id_producto']);
         $objproducto->set_nombre($_POST['nombre']);
         $objproducto->set_descripcion($_POST['descripcion']);
-        $objproducto->set_marca($_POST['marca']);
+        $objproducto->set_id_marca($_POST['id_marca']);
         $objproducto->set_stock($_POST['stock']);
         $objproducto->set_precio($_POST['precio']);
-        $objproducto->set_categoria($_POST['categoria']);
-        $objproducto->set_proveedor($_POST['proveedor']);
+        $objproducto->set_id_categoria($_POST['id_categoria']);
+        $objproducto->set_id_proveedor($_POST['id_proveedor']);
 
         $resultado = $objproducto->registrar();
 
@@ -38,14 +35,14 @@
         $objproducto->set_id_producto($_POST['id_producto']);
         $objproducto->set_nombre($_POST['nombre']);
         $objproducto->set_descripcion($_POST['descripcion']);
-        $objproducto->set_marca($_POST['marca']);
+        $objproducto->set_id_marca($_POST['id_marca']);
         $objproducto->set_stock($_POST['stock']);
         $objproducto->set_precio($_POST['precio']);
-        $objproducto->set_categoria($_POST['categoria']);
-        $objproducto->set_proveedor($_POST['proveedor']);
+        $objproducto->set_id_categoria($_POST['id_categoria']);
+        $objproducto->set_id_proveedor($_POST['id_proveedor']);
 
         $resultado = $objproducto->actualizar();
     }
 
-    
+    $objproducto->eliminar();
 ?>
