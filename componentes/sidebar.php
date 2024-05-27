@@ -2,7 +2,7 @@
 <div class="sidebar">
     <a href="#" class="logo">
         <i class='bx bx-code-alt'></i>
-        <div class="logo-name"><span>Asmr</span>Prog</div>
+        <div class="logo-name"><span>Inventario</span> Web</div>
     </a>
     <ul class="side-menu">
         <li><a href="../view/dashboard.php"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
